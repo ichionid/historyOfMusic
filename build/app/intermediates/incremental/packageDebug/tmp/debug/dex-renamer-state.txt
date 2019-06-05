@@ -1,4 +1,4 @@
-#Tue Jun 04 15:51:38 CEST 2019
-base.0=/home/gh101/Projects/my_flutter_app/build/app/intermediates/transforms/dexMerger/debug/0
+#Wed Jun 05 10:45:35 CEST 2019
+base.0=/home/gh101/Projects/historyOfMusic/build/app/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

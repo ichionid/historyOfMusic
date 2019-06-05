@@ -1,64 +1,82 @@
 import 'package:flutter/material.dart';
-import 'package:timeline_list/timeline.dart';
-import 'package:timeline_list/timeline_model.dart';
 
-List<TimelineModel> items = [
-  TimelineModel(Placeholder(),
-      position: TimelineItemPosition.random,
-      iconBackground: Colors.redAccent,
-      icon: Icon(Icons.blur_circular)),
-  TimelineModel(Placeholder(),
-      position: TimelineItemPosition.random,
-      iconBackground: Colors.redAccent,
-      icon: Icon(Icons.blur_circular)),
-];
+void main() => runApp(MyApp());
 
-void main() {
-  runApp(MaterialApp(
-    initialRoute: '/',
-    routes: <String, WidgetBuilder>{
-      '/': (context) => HomePage(),
-      '/history': (context) => SecondHome(),
-    },
-  ));
+class MyApp extends StatelessWidget {
+  final appTitle = 'Drawer Demo';
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: appTitle,
+      home: HomePage(title: appTitle),
+    );
+  }
 }
 
 class HomePage extends StatelessWidget {
+  final String title;
+
+  HomePage({Key key, this.title}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-      ),
-      body: new Center(
-        child: RaisedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/history');
-          },
-          child: Text('History'),
+      appBar: AppBar(title: Text(title)),
+      body: Center(child: Text('My Page!')),
+      drawer: Drawer(
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the Drawer if there isn't enough vertical
+        // space to fit everything.
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Drawer Header'),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              title: Text('History of Jazz'),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HistoryOfJazzPage()),
+                );
+               },
+            ),
+            ListTile(
+              title: Text('Todo'),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => HomePage()));
+              }
+            ),
+          ],
         ),
       ),
     );
   }
 }
-
-class SecondHome extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('History of music'),
-      ),
-      body: new Timeline(children: items, position: TimelinePosition.Center),
-      floatingActionButton: FloatingActionButton(
+class HistoryOfJazzPage extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: Text("Jazz history"),
+    ),
+    body: Center(
+      child: RaisedButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/history');
+          // Navigate back to first route when tapped.
         },
-        tooltip: 'Increment Counter',
-        child: Icon(Icons.add),
+        child: Text('Go back!'),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-    )
-    );
-  }
+    ),
+  );
+}
 }
