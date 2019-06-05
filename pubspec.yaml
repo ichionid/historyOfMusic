@@ -1,5 +1,5 @@
-name: my_flutter_app
-description: A new Flutter project.
+name: music_history
+description: A project for music history.
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,7 +19,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  timeline_list: ^0.0.3
+  timeline_list: ^0.0.4
+  flutter_launcher_icons: "^0.7.0"
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -29,6 +30,11 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+
+flutter_icons:
+  image_path: "android/app/src/web_hi_res_512.png"
+  android: true
+  ios: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'jazzTimeline.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  final appTitle = 'Drawer Demo';
+  final appTitle = 'Music history';
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
-      body: Center(child: Text('My Page!')),
+      body: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('Navigate to all the different music genres from the menu. Happy reading!')
+      ),
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the Drawer if there isn't enough vertical
@@ -33,7 +37,7 @@ class HomePage extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              child: Text('Drawer Header'),
+              child: Text('Home'),
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
@@ -61,22 +65,4 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-}
-class HistoryOfJazzPage extends StatelessWidget {
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      title: Text("Jazz history"),
-    ),
-    body: Center(
-      child: RaisedButton(
-        onPressed: () {
-          // Navigate back to first route when tapped.
-        },
-        child: Text('Go back!'),
-      ),
-    ),
-  );
-}
 }
